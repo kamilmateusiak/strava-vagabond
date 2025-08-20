@@ -87,6 +87,7 @@ Each decision is documented in a separate markdown file following this structure
 - [Project Structure](003-project-structure.md) - Project organization and directory structure
 - [Approach Continuation](004-approach-continuation.md) - Decision to continue TDD-first approach
 - [Status System Improvement](005-status-system-improvement.md) - Enhanced decision status tracking
+- [Finding Context Enhancement](006-finding-context-enhancement.md) - Enhanced findings with rich chat context
 
 ## How to Use This Log
 

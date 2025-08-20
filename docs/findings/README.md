@@ -34,6 +34,9 @@ Each finding is documented in a separate markdown file following this structure:
 ## Current Findings
 
 - [Documentation Order](001-documentation-order.md) - PRD should come before TDD
+- [Problem Statement Iteration](002-problem-statement-iteration.md) - Problem statements require iterative refinement
+- [Competitive Analysis Value](003-competitive-analysis-value.md) - Competitive analysis significantly improves problem definition
+- [Success Criteria Realism](004-success-criteria-realism.md) - Realistic success criteria are essential for project success
 
 ## How to Use These Findings
 
