@@ -37,6 +37,7 @@ Each finding is documented in a separate markdown file following this structure:
 - [Problem Statement Iteration](002-problem-statement-iteration.md) - Problem statements require iterative refinement
 - [Competitive Analysis Value](003-competitive-analysis-value.md) - Competitive analysis significantly improves problem definition
 - [Success Criteria Realism](004-success-criteria-realism.md) - Realistic success criteria are essential for project success
+- [Document Separation of Concerns](005-document-separation-of-concerns.md) - Separating business and technical concerns improves document clarity
 
 ## How to Use These Findings
 

@@ -88,6 +88,7 @@ Each decision is documented in a separate markdown file following this structure
 - [Approach Continuation](004-approach-continuation.md) - Decision to continue TDD-first approach
 - [Status System Improvement](005-status-system-improvement.md) - Enhanced decision status tracking
 - [Finding Context Enhancement](006-finding-context-enhancement.md) - Enhanced findings with rich chat context
+- [Document Separation of Concerns](007-document-separation-of-concerns.md) - Implemented document separation to eliminate redundancy
 
 ## How to Use This Log
 

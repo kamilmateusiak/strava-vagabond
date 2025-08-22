@@ -1,5 +1,7 @@
 # Problem Statement
 
+> **Document Focus**: Business context, problem definition, competitive analysis, and high-level success criteria. For technical specifications and detailed requirements, see [Requirements Analysis](02-requirements-analysis.md).
+
 ## Executive Summary
 
 I lack visibility into my cycling exploration patterns. I cannot easily determine how much of my rides cover new territory versus previously visited routes, making it difficult to track my exploration progress and plan future adventures.
@@ -48,46 +50,11 @@ Strava tracks GPS coordinates and route data, providing basic activity recording
 
 **GPS Data Approach**: Strava provides processed coordinates from completed workouts. We analyze historical data for uniqueness without concerning ourselves with raw GPS accuracy, device precision, or real-time processing. The key challenge is developing algorithms for determining route similarity from completed workout data.
 
-## Constraints
 
-**Technical**: The system must integrate with existing Strava API without impacting performance, handle API rate limits and errors gracefully, and support multiple cycling disciplines.
 
-**Strava API Specific**: We must respect API rate limits (requests per hour/day), handle rate limit errors gracefully with retry logic, process completed workouts rather than real-time data, and work within API data availability and format constraints.
 
-**Business**: The project must respect Strava terms of service, require no platform modifications, function as a personal project with expansion potential, and provide value without premium subscriptions.
 
-**Privacy**: User location data must be protected, GDPR compliance maintained, user control over data sharing provided, and data retention minimized.
 
-## Scope
-
-**Phase 1 - Core Analysis**: Personal activity analysis, route uniqueness detection, historical route database, REST API for results, and basic authentication with Strava integration.
-
-**Phase 2 - Discovery Features**: Interactive exploration map, unexplored area identification, route gap analysis, and basic route recommendations.
-
-**Future Phases**: Advanced route suggestions, exploration challenges and goals, social features (if expanding to community), mobile applications, and multi-platform integration.
-
-## Out of Scope
-
-**Real-time Features**: Live GPS tracking, real-time route analysis, or instant notifications during rides.
-
-**Advanced Analytics**: Machine learning route recommendations, predictive analysis, or complex statistical modeling.
-
-**Social Features**: User communities, route sharing platforms, leaderboards, or social media integration.
-
-**Mobile Applications**: Native iOS/Android apps, mobile-specific features, or offline functionality.
-
-**Multi-platform Integration**: Support for platforms beyond Strava (Garmin, Wahoo, etc.) in initial phases.
-
-**Enterprise Features**: Multi-user management, advanced security, or business analytics.
-
-**Data Export**: Complex data export formats, third-party integrations, or data migration tools.
-
-## Next Steps
-
-1. **Requirements Analysis**: Functional and non-functional requirements
-2. **Technical Research**: Strava API capabilities investigation  
-3. **Solution Design**: Architecture and implementation planning
-4. **Feasibility Assessment**: Technical and business viability
 
 
 
