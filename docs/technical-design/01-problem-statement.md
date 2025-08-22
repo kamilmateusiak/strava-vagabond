@@ -66,6 +66,22 @@ Strava tracks GPS coordinates and route data, providing basic activity recording
 
 **Future Phases**: Advanced route suggestions, exploration challenges and goals, social features (if expanding to community), mobile applications, and multi-platform integration.
 
+## Out of Scope
+
+**Real-time Features**: Live GPS tracking, real-time route analysis, or instant notifications during rides.
+
+**Advanced Analytics**: Machine learning route recommendations, predictive analysis, or complex statistical modeling.
+
+**Social Features**: User communities, route sharing platforms, leaderboards, or social media integration.
+
+**Mobile Applications**: Native iOS/Android apps, mobile-specific features, or offline functionality.
+
+**Multi-platform Integration**: Support for platforms beyond Strava (Garmin, Wahoo, etc.) in initial phases.
+
+**Enterprise Features**: Multi-user management, advanced security, or business analytics.
+
+**Data Export**: Complex data export formats, third-party integrations, or data migration tools.
+
 ## Next Steps
 
 1. **Requirements Analysis**: Functional and non-functional requirements
