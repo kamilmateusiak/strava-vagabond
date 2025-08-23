@@ -38,6 +38,9 @@ Each finding is documented in a separate markdown file following this structure:
 - [Competitive Analysis Value](003-competitive-analysis-value.md) - Competitive analysis significantly improves problem definition
 - [Success Criteria Realism](004-success-criteria-realism.md) - Realistic success criteria are essential for project success
 - [Document Separation of Concerns](005-document-separation-of-concerns.md) - Separating business and technical concerns improves document clarity
+- [Date Accuracy Importance](006-date-accuracy-importance.md) - Date accuracy is critical for professional documentation
+- [Complexity Scoring Intuitive Design](007-complexity-scoring-intuitive-design.md) - Intuitive scoring systems are critical for technical decision making
+- [User Expertise Validates AI Suggestions](008-user-expertise-validates-ai-suggestions.md) - User expertise and independent research validate AI suggestions
 
 ## How to Use These Findings
 

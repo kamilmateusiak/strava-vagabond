@@ -89,6 +89,9 @@ Each decision is documented in a separate markdown file following this structure
 - [Status System Improvement](005-status-system-improvement.md) - Enhanced decision status tracking
 - [Finding Context Enhancement](006-finding-context-enhancement.md) - Enhanced findings with rich chat context
 - [Document Separation of Concerns](007-document-separation-of-concerns.md) - Implemented document separation to eliminate redundancy
+- [Technology Stack Selection](008-technology-stack-selection.md) - Selected Option 5 hybrid monolith with Node.js + Bull + Upstash + Neon
+- [Infrastructure Provider Selection](009-infrastructure-provider-selection.md) - Chose Upstash Redis and Neon PostgreSQL for serverless infrastructure
+- [Event-Driven Architecture](010-event-driven-architecture.md) - Implemented event-driven architecture with Bull + Redis for queue management
 
 ## How to Use This Log
 
