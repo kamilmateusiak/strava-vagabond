@@ -458,28 +458,30 @@ This document evaluates different implementation approaches for the Strava Vagab
 ### **Evaluation Criteria**
 We've analyzed each option across multiple dimensions to provide a balanced comparison:
 
-- **Complexity**: How difficult is it to implement and maintain?
+- **Complexity**: How easy is it to implement and maintain? (Lower complexity = Higher score)
 - **Learning Value**: Educational benefits for personal development
 - **Performance**: Can it handle 2000+ activities efficiently?
 - **Scalability**: How well does it grow with future requirements?
 - **Local Development**: Ease of setting up and testing locally
-- **Cost**: Infrastructure and hosting expenses
+- **Cost**: Infrastructure and hosting expenses (Lower cost = Higher score)
 
 ### **Scoring Summary**
 
+> **Note**: Complexity scores are inverted - higher scores (⭐⭐⭐⭐⭐) mean **lower complexity** (easier to implement). Cost scores are also inverted - higher scores mean **lower cost**. This provides more intuitive scoring where higher overall scores indicate better overall solutions.
+
 | Option | Complexity | Learning | Performance | Scalability | Local Dev | Cost | **Overall** |
 |--------|------------|----------|-------------|-------------|-----------|------|-------------|
-| **Option 1** | ⭐⭐☆☆☆ | ⭐⭐⭐☆☆ | ⭐⭐⭐☆☆ | ⭐⭐☆☆☆ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | **3.2/5** |
-| **Option 2** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐☆☆☆ | ⭐⭐☆☆☆ | **4.2/5** |
-| **Option 3** | ⭐⭐⭐⭐☆ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐☆ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐☆☆ | ⭐⭐⭐☆☆ | **4.0/5** |
+| **Option 1** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐☆☆ | ⭐⭐⭐☆☆ | ⭐⭐☆☆☆ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | **4.0/5** |
+| **Option 2** | ⭐⭐☆☆☆ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐☆☆☆ | ⭐⭐☆☆☆ | **3.8/5** |
+| **Option 3** | ⭐⭐☆☆☆ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐☆ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐☆☆ | ⭐⭐⭐☆☆ | **3.8/5** |
 | **Option 4** | ⭐⭐⭐☆☆ | ⭐⭐⭐⭐☆ | ⭐⭐⭐☆☆ | ⭐⭐⭐⭐⭐ | ⭐⭐☆☆☆ | ⭐⭐⭐⭐☆ | **3.6/5** |
-| **Option 5** | ⭐⭐⭐☆☆ | ⭐⭐⭐☆☆ | ⭐⭐⭐⭐☆ | ⭐⭐⭐☆☆ | ⭐⭐⭐⭐☆ | ⭐⭐⭐⭐⭐ | **3.8/5** |
-| **Option 6** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐☆☆☆ | ⭐⭐⭐☆☆ | **3.8/5** |
+| **Option 5** | ⭐⭐⭐☆☆ | ⭐⭐⭐☆☆ | ⭐⭐⭐⭐☆ | ⭐⭐⭐☆☆ | ⭐⭐⭐⭐☆ | ⭐⭐⭐⭐⭐ | **4.0/5** |
+| **Option 6** | ⭐☆☆☆☆ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐☆☆☆ | ⭐⭐⭐☆☆ | **3.5/5** |
 
 ### **Detailed Scoring Breakdown**
 
 #### **Option 1: Monolithic JavaScript**
-- **Complexity**: ⭐⭐☆☆☆ (Low) - Single codebase, familiar patterns
+- **Complexity**: ⭐⭐⭐⭐⭐ (Low) - Single codebase, familiar patterns
 - **Learning**: ⭐⭐⭐☆☆ (Medium) - JavaScript ecosystem, basic patterns
 - **Performance**: ⭐⭐⭐☆☆ (Medium) - Good for personal use, limited scaling
 - **Scalability**: ⭐⭐☆☆☆ (Low) - Hard to scale individual components
@@ -487,7 +489,7 @@ We've analyzed each option across multiple dimensions to provide a balanced comp
 - **Cost**: ⭐⭐⭐⭐⭐ (Low) - Simple hosting, no external services
 
 #### **Option 2: Microservices + AWS SQS + Golang**
-- **Complexity**: ⭐⭐⭐⭐⭐ (High) - Distributed system, multiple services
+- **Complexity**: ⭐⭐☆☆☆ (High) - Distributed system, multiple services
 - **Learning**: ⭐⭐⭐⭐⭐ (Excellent) - Golang, SQS, microservices
 - **Performance**: ⭐⭐⭐⭐⭐ (Excellent) - Optimized services, high throughput
 - **Scalability**: ⭐⭐⭐⭐⭐ (Excellent) - Independent scaling, queue-based
@@ -495,7 +497,7 @@ We've analyzed each option across multiple dimensions to provide a balanced comp
 - **Cost**: ⭐⭐☆☆☆ (Medium-High) - AWS services, potential over-engineering
 
 #### **Option 3: Event-Driven Architecture**
-- **Complexity**: ⭐⭐⭐⭐☆ (High) - Event sourcing, CQRS patterns
+- **Complexity**: ⭐⭐☆☆☆ (High) - Event sourcing, CQRS patterns
 - **Learning**: ⭐⭐⭐⭐⭐ (Excellent) - Advanced architectural patterns
 - **Performance**: ⭐⭐⭐⭐☆ (Very Good) - Event-driven, scalable processing
 - **Scalability**: ⭐⭐⭐⭐⭐ (Excellent) - Easy to add consumers, event replay
@@ -519,7 +521,7 @@ We've analyzed each option across multiple dimensions to provide a balanced comp
 - **Cost**: ⭐⭐⭐⭐⭐ (Low) - Simple hosting, Upstash Redis ($0.20-2/month)
 
 #### **Option 6: Kubernetes + Container Orchestration**
-- **Complexity**: ⭐⭐⭐⭐⭐ (Very High) - Cluster management, service mesh
+- **Complexity**: ⭐☆☆☆☆ (Very High) - Cluster management, service mesh
 - **Learning**: ⭐⭐⭐⭐⭐ (Excellent) - Industry standard, career value
 - **Performance**: ⭐⭐⭐⭐⭐ (Excellent) - Optimized services, resource management
 - **Scalability**: ⭐⭐⭐⭐⭐ (Excellent) - Excellent scaling, resource limits
@@ -552,10 +554,11 @@ We've analyzed each option across multiple dimensions to provide a balanced comp
 
 **Why This Option**:
 - **Learning Value**: Introduces queue patterns and worker threads
-- **Complexity**: Manageable without being overwhelming
+- **Complexity**: Manageable without being overwhelming (⭐⭐⭐☆☆ - Medium)
 - **Performance**: Good enough for 2000+ activities with worker optimization
-- **Local Development**: Single service with Redis for queues
+- **Local Development**: Single service with Upstash Redis
 - **Growth Potential**: Easy to extract services to microservices later
+- **Overall Score**: 4.0/5 - Tied for best overall solution
 
 ### **Secondary Recommendation**: Option 2 (Microservices + AWS SQS + Golang)
 
