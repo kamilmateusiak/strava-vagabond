@@ -333,72 +333,13 @@ This document evaluates different implementation approaches for the Strava Vagab
 - **Redis**: $0.20-2/month (Upstash serverless)
 - **Total**: $5.20-41/month
 
-#### **Cost Benefits of Upstash**
-- **Traditional Redis**: $15-30/month
-- **Upstash Redis**: $0.20-2/month
-- **Monthly Savings**: $13-28/month
-- **Annual Savings**: $156-336/year
-
-#### **Free Tier Coverage**
-- **Upstash**: 10,000 requests/day (sufficient for 2000+ activities)
-- **Neon**: 3GB storage, 0.5 vCPU, unlimited connections
+#### **Key Benefits**
 - **Development**: $0/month (both services free)
-- **Initial Production**: $0-21/month (Neon free + Upstash $0.20-2)
+- **Production**: $5.20-41/month (serverless pricing)
+- **Traditional Alternative**: $35-105/month
+- **Monthly Savings**: $30-100/month
 
-### **Upstash Integration Benefits**
-
-#### **Why Upstash is Perfect for Option 5**
-- **Serverless Redis**: No infrastructure management required
-- **Pay-per-request**: Only pay for actual usage (perfect for personal projects)
-- **Global Edge Locations**: Low latency worldwide
-- **Built-in Persistence**: Automatic backups and data durability
-- **Bull Queue Native Support**: Seamless integration with Node.js Bull
-
-#### **Implementation Advantages**
-- **Zero Maintenance**: No Redis server setup, monitoring, or scaling
-- **Environment Parity**: Same Redis instance in development and production
-- **Automatic Scaling**: Handles Strava webhook bursts without capacity planning
-- **Production Ready**: 99.9% uptime SLA, enterprise-grade reliability
-
-#### **Cost Comparison with Alternatives**
-| Redis Service | Monthly Cost | Setup Complexity | Maintenance |
-|---------------|--------------|------------------|-------------|
-| **Upstash** | $0.20-2 | Zero | Zero |
-| **DigitalOcean** | $15 | Medium | Low |
-| **Heroku** | $10-30 | Low | Low |
-| **AWS ElastiCache** | $15-30 | High | Medium |
-
-### **Neon PostgreSQL Integration Benefits**
-
-#### **Why Neon is Perfect for Option 5**
-- **100% PostgreSQL Compatible**: No feature limitations or vendor lock-in
-- **Full PostGIS Support**: Complete spatial database capabilities for route analysis
-- **Serverless Architecture**: Pay-per-compute, scales to zero when not in use
-- **Database Branching**: Create instant copies for development and testing
-- **Global Edge Locations**: Low latency worldwide with automatic failover
-
-#### **PostGIS Capabilities for Route Analysis**
-- **Spatial Data Types**: Full support for POINT, LINESTRING, POLYGON
-- **Spatial Indexing**: GIST indexes for fast geometric queries
-- **Advanced Functions**: ST_Distance, ST_HausdorffDistance, ST_Within
-- **Route Similarity**: Can implement proper geometric algorithms instead of grid-based hashing
-- **Performance**: Optimized for spatial operations with connection pooling
-
-#### **Cost Comparison with Database Alternatives**
-| Database Service | Monthly Cost | PostGIS | Storage | Compute | **Best For** |
-|------------------|--------------|---------|---------|---------|--------------|
-| **Neon Hobby** | $0 | ✅ Full | 3GB | 0.5 vCPU | **Development** |
-| **Neon Pro** | $19 | ✅ Full | 100GB | 2 vCPU | **Production** |
-| **Vercel Postgres** | $0-20 | ✅ Full | 256MB-8GB | Limited | Development |
-| **Supabase** | $25 | ✅ Full | 8GB | Shared | Production |
-| **AWS RDS** | $12-25 | ✅ Full | Variable | Variable | Enterprise |
-
-#### **Implementation Advantages**
-- **Zero Maintenance**: No database server setup, monitoring, or scaling
-- **Environment Parity**: Same database capabilities in development and production
-- **Automatic Scaling**: Handles 2000+ activities without capacity planning
-- **Production Ready**: 99.9% uptime, automatic backups, point-in-time recovery
-- **Developer Experience**: CLI tools, branching, easy migrations
+> **Note**: Detailed cost analysis, vendor comparisons, and implementation specifics will be covered in the Architecture Design section.
 
 ## Option 6: Container-Native with Kubernetes
 
@@ -559,6 +500,7 @@ We've analyzed each option across multiple dimensions to provide a balanced comp
 - **Local Development**: Single service with Upstash Redis
 - **Growth Potential**: Easy to extract services to microservices later
 - **Overall Score**: 4.0/5 - Tied for best overall solution
+- **Migration Path**: Clear evolution to microservices with Golang for learning experience
 
 ### **Secondary Recommendation**: Option 2 (Microservices + AWS SQS + Golang)
 
@@ -591,12 +533,14 @@ We've analyzed each option across multiple dimensions to provide a balanced comp
 - Move route analysis to separate service
 - Introduce service-to-service communication
 - Learn microservices patterns gradually
+- **Golang Learning**: Implement route analyzer in Golang for performance and learning
 
 ### **Phase 3: Full Microservices (Option 2)**
 - Complete microservices architecture
 - AWS SQS integration
-- Golang route analyzer
+- **Golang Expertise**: Route analyzer service in Golang with advanced PostGIS algorithms
 - Production-ready scalability
+- **Learning Achievement**: Master both microservices and Golang for career development
 
 ## Next Steps
 
