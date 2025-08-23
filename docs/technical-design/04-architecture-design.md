@@ -55,6 +55,8 @@ graph TB
 
 - **Backend**: Node.js + Express/Fastify
 - **Internal Queues**: Bull + Upstash Redis (serverless)
+  - **Features**: Dead letter queues, retry logic, job monitoring, priority queues
+  - **Benefits**: Built-in error handling, exponential backoff, job persistence
 - **Database**: Neon PostgreSQL + PostGIS (serverless)
 - **Background Jobs**: Node.js worker threads
 - **Deployment**: Vercel, Railway, or DigitalOcean
@@ -203,19 +205,58 @@ Total:                    $41/month
 #### **Internal Queue System**
 - **Technology**: Bull + Upstash Redis
 - **Queue Types**:
-  - **Activity Queue**: New activities from Strava webhooks
-  - **Analysis Queue**: Route analysis jobs
-  - **Email Queue**: Email generation jobs
+  - **Activity Queue**: New activities from Strava webhooks (high priority)
+  - **Bulk Queue**: Initial bulk processing of historical activities (low priority)
+  - **Email Queue**: Email generation and delivery (medium priority)
 - **Processing**: Worker threads with configurable concurrency
 - **Error Handling**: Dead letter queues, retry logic, job monitoring
 
-#### **Queue Flow**
+#### **Queue Configuration**
+- **Activity Queue**: 2-3 workers for real-time webhook processing
+- **Bulk Queue**: 1-2 workers for background bulk processing
+- **Email Queue**: 1 worker for email generation and delivery
+
+#### **Retry Strategy & Error Handling**
+- **Max Retries**: 3 attempts per job
+- **Retry Delays**: Immediate, 5 seconds, 15 seconds (exponential backoff)
+- **Dead Letter Queue**: Failed jobs moved to DLQ after 3 retries
+- **Monitoring**: Track failed jobs, retry counts, and failure reasons
+
+#### **Event-Driven Architecture**
+
+**Core Events**:
+- **`strava.activity.received`** - New activity from webhook (high priority)
+- **`strava.activity.analyzed`** - Route analysis completed (medium priority)
+- **`strava.bulk.import.ready`** - Bulk activities ready for processing (low priority)
+
+**Supporting Events**:
+- **`strava.activity.failed`** - Analysis failure (for retry logic)
+- **`strava.bulk.import.completed`** - Bulk processing finished
+- **`strava.email.sent`** - Email delivery confirmation
+- **`strava.user.connected`** - New user authorization
+
+#### **Event Flow**
 ```
-Strava Webhook → Activity Queue → Route Analysis → Email Queue → Email Service
-     ↓              ↓              ↓              ↓              ↓
-  Immediate      Background      Background      Background      Background
-  Response      Processing      Processing      Processing      Processing
+Strava Webhook → strava.activity.received → Activity Queue → Route Analysis → strava.activity.analyzed → Email Queue → Email Service
+     ↓                    ↓                    ↓              ↓                    ↓              ↓              ↓
+  Immediate         Background           Worker Threads    Store Results      Trigger Email   Email Generation   Email Delivery
+  Response         Processing           (2-3 workers)     in Database        Generation      (1 worker)        (1 worker)
 ```
+
+#### **Bulk Processing Flow**
+```
+Initial Auth → Fetch All Activities → strava.bulk.import.ready → Bulk Queue → Batch Processing → strava.bulk.import.completed
+     ↓              ↓                      ↓              ↓              ↓              ↓
+  Strava OAuth   Strava API Calls    Bulk Processing   Worker Pool    Rate-Limited   Completion Event
+                                                      (1-2 workers)   Batches
+```
+
+#### **Rate Limiting Strategy**
+- **Strava API Limits**: 100 requests per 15 minutes = ~6.7 requests/minute
+- **Batch Size**: 50-100 activities per batch (conservative approach)
+- **Processing Interval**: 1 batch every 2-3 minutes
+- **Total Time**: ~2000 activities ÷ 75/batch × 2.5 minutes = ~67 minutes
+- **Benefits**: Respects API limits, controlled processing, easy error handling
 
 ### **3. Data Layer**
 
