@@ -260,47 +260,7 @@ curl -H "Authorization: Bearer <jwt_token>" \
 
 ### **3. Strava Integration Endpoints**
 
-#### **POST /strava/sync**
-**Description**: Trigger manual sync of Strava activities
-
-**Headers**: `Authorization: Bearer <jwt-token>`
-
-**Request**:
-```json
-{
-  "sync_type": "full" // "full" | "recent" | "since_date"
-}
-```
-
-**Response**:
-```json
-{
-  "sync_id": "sync-uuid",
-  "status": "started",
-  "estimated_activities": 1500,
-  "estimated_duration": "PT2H30M"
-}
-```
-
-#### **GET /strava/sync/{sync_id}**
-**Description**: Get sync status and progress
-
-**Headers**: `Authorization: Bearer <jwt-token>`
-
-**Response**:
-```json
-{
-  "sync_id": "sync-uuid",
-  "status": "processing", // "started" | "processing" | "completed" | "failed"
-  "progress": {
-    "total_activities": 1500,
-    "processed": 750,
-    "percentage": 50
-  },
-  "started_at": "2024-01-15T10:30:00Z",
-  "estimated_completion": "2024-01-15T13:00:00Z"
-}
-```
+> **Note**: Strava integration is handled automatically via webhooks for new activities and batch processing for initial historical data import. No manual sync endpoints are needed.
 
 #### **GET /strava/activities**
 **Description**: List user's Strava activities
@@ -310,9 +270,7 @@ curl -H "Authorization: Bearer <jwt_token>" \
 **Query Parameters**:
 - `page`: Page number (default: 1)
 - `limit`: Items per page (default: 20, max: 100)
-- `type`: Activity type filter (e.g., "Ride", "Run")
 - `since`: Filter activities since date (ISO 8601)
-- `until`: Filter activities until date (ISO 8601)
 
 **Response**:
 ```json
@@ -406,12 +364,8 @@ curl -H "Authorization: Bearer <jwt_token>" \
 }
 ```
 
-#### **GET /routes/{route_id}/map**
-**Description**: Get route map data (GeoJSON)
 
-**Headers**: `Authorization: Bearer <jwt-token>`
 
-**Response**: GeoJSON FeatureCollection with route geometry
 
 ### **5. Analytics Endpoints**
 
@@ -420,60 +374,19 @@ curl -H "Authorization: Bearer <jwt_token>" \
 
 **Headers**: `Authorization: Bearer <jwt-token>`
 
-**Query Parameters**:
-- `since`: Start date for analysis (ISO 8601)
-- `until`: End date for analysis (ISO 8601)
+**Query Parameters**: None (returns all-time summary
 
 **Response**:
 ```json
 {
-  "period": {
-    "since": "2024-01-01T00:00:00Z",
-    "until": "2024-01-31T23:59:59Z"
-  },
   "summary": {
     "total_activities": 45,
-    "total_distance_km": 1250.5,
-    "total_elevation_m": 18500,
-    "total_time_hours": 85.5,
     "new_routes_discovered": 23,
     "average_uniqueness_score": 0.78
-  },
-  "monthly_trends": [
-    {
-      "month": "2024-01",
-      "activities": 45,
-      "new_routes": 23,
-      "uniqueness_score": 0.78
-    }
-  ]
+  }
 }
 ```
 
-#### **GET /analytics/leaderboard**
-**Description**: Get route discovery leaderboard (if multi-user)
-
-**Headers**: `Authorization: Bearer <jwt-token>`
-
-**Query Parameters**:
-- `period`: Time period (e.g., "month", "year", "all_time")
-- `limit`: Top N users (default: 10, max: 50)
-
-**Response**:
-```json
-{
-  "period": "month",
-  "leaderboard": [
-    {
-      "user_id": "user-uuid",
-      "strava_id": "12345",
-      "new_routes": 45,
-      "total_distance_km": 850.2,
-      "uniqueness_score": 0.92
-    }
-  ]
-}
-```
 
 ### **6. Email & Notifications Endpoints**
 

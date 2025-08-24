@@ -233,36 +233,19 @@ async function processBulkActivities(userId) {
   const batches = chunk(activities, 75); // 75 activities per batch
   
   for (const batch of batches) {
-    await activityQueue.add('process-batch', {
-      userId,
-      activities: batch
-    });
+    // Process batch and store results
+    await processActivityBatch(userId, batch);
     
-    // Wait 3 minutes before next batch
+    // Wait 3 minutes before next batch (rate limit compliance)
     await delay(180000);
   }
 }
 ```
 
-### **Progress Tracking**
-
-#### **Batch Status Updates**
-```javascript
-// Update progress in database
-await db.bulkImport.update(importId, {
-  status: 'processing',
-  progress: {
-    total: totalActivities,
-    processed: processedCount,
-    percentage: Math.round((processedCount / totalActivities) * 100)
-  }
-});
-```
-
-#### **User Feedback**
-- **Email Updates**: Progress notifications for large imports
-- **API Status**: Real-time progress via API endpoints
-- **Error Reporting**: Detailed error information for failed batches
+### **Simple Processing**
+- **No Complex Tracking**: Just process activities and store results
+- **Rate Limit Compliance**: Stay within Strava's 100/15min limit
+- **Background Operation**: User doesn't need to monitor progress
 
 ## Error Handling Strategies
 
