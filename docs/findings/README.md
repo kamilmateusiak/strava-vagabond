@@ -42,6 +42,7 @@ Each finding is documented in a separate markdown file following this structure:
 - [Complexity Scoring Intuitive Design](007-complexity-scoring-intuitive-design.md) - Intuitive scoring systems are critical for technical decision making
 - [User Expertise Validates AI Suggestions](008-user-expertise-ai-suggestions.md) - User expertise and independent research validate AI suggestions
 - [Partial File Reading Limitation](009-partial-file-reading-limitation.md) - AI agents tend to read partial files, leading to incomplete analysis
+- [AI Over-Agreement Limits Critical Thinking](010-ai-over-agreement-limits-critical-thinking.md) - AI assistants being overly agreeable limits critical thinking and problem-solving effectiveness
 
 ## How to Use These Findings
 
