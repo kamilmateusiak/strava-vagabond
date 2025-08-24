@@ -282,7 +282,7 @@ Initial Auth → Fetch All Activities → strava.bulk.import.ready → Bulk Queu
 - **Users Table**: Strava user information and preferences
 - **Activities Table**: Strava activity metadata and GPS data
 - **Routes Table**: Processed route segments with PostGIS geometry
-- **Route_Segments Table**: Individual GPS segments for similarity analysis
+- **Route_Segments Table**: Individual GPS segments for granular uniqueness analysis
 - **Email_Logs Table**: Email delivery tracking and preferences
 
 #### **PostGIS Spatial Design**

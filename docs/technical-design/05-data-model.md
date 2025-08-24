@@ -35,9 +35,6 @@ erDiagram
         uuid id PK
         string strava_id UK
         string email
-        string first_name
-        string last_name
-        string profile_picture
         timestamp created_at
         timestamp updated_at
         jsonb preferences
@@ -124,7 +121,7 @@ CREATE TABLE users (
     strava_access_token TEXT NOT NULL,
     strava_refresh_token TEXT NOT NULL,
     strava_token_expires_at TIMESTAMP NOT NULL,
-    preferences JSONB DEFAULT '{}', -- Email preferences, notification settings, etc.
+    preferences JSONB DEFAULT '{}', -- Email preferences only
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 );
