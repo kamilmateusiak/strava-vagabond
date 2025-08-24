@@ -6,6 +6,8 @@
 
 This section defines the functional and non-functional requirements for the Strava Vagabond application, building upon the problem statement to create clear, actionable specifications for development.
 
+> **Note**: For application context and user workflow details, see [Problem Statement - Application Context](01-problem-statement.md#application-context).
+
 ## Functional Requirements
 
 ### Core Route Analysis

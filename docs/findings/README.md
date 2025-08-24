@@ -40,7 +40,8 @@ Each finding is documented in a separate markdown file following this structure:
 - [Document Separation of Concerns](005-document-separation-of-concerns.md) - Separating business and technical concerns improves document clarity
 - [Date Accuracy Importance](006-date-accuracy-importance.md) - Date accuracy is critical for professional documentation
 - [Complexity Scoring Intuitive Design](007-complexity-scoring-intuitive-design.md) - Intuitive scoring systems are critical for technical decision making
-- [User Expertise Validates AI Suggestions](008-user-expertise-validates-ai-suggestions.md) - User expertise and independent research validate AI suggestions
+- [User Expertise Validates AI Suggestions](008-user-expertise-ai-suggestions.md) - User expertise and independent research validate AI suggestions
+- [Partial File Reading Limitation](009-partial-file-reading-limitation.md) - AI agents tend to read partial files, leading to incomplete analysis
 
 ## How to Use These Findings
 

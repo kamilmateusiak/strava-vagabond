@@ -121,10 +121,14 @@ CREATE TABLE users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     strava_id VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(255) NOT NULL,
+    strava_access_token TEXT NOT NULL,
+    strava_refresh_token TEXT NOT NULL,
+    strava_token_expires_at TIMESTAMP NOT NULL,
     preferences JSONB DEFAULT '{}', -- Email preferences, notification settings, etc.
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 );
+```
 
 -- Index for Strava ID lookups
 CREATE INDEX idx_users_strava_id ON users(strava_id);
@@ -136,9 +140,16 @@ CREATE INDEX idx_users_email ON users(email);
 **Purpose**: Store essential user information for Strava integration
 **Key Features**: 
 - Strava ID for API integration
+- Strava access and refresh tokens for API authentication
 - Email for notifications and user identification
 - JSONB preferences for email settings and future features
 - Timestamps for audit trail
+
+**Token Management**:
+- `strava_access_token`: Short-lived token (6 hours) for API calls
+- `strava_refresh_token`: Long-lived token for getting new access tokens
+- `strava_token_expires_at`: When the access token expires
+- Tokens are encrypted at rest for security
 
 ### **2. Activities Table**
 

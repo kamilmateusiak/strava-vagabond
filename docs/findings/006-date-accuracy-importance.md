@@ -1,4 +1,4 @@
-# Finding: Date Accuracy is Critical for Professional Documentation
+# Finding: Date Accuracy is CRITICAL - AI Assistants MUST Check Current Date
 
 **Date:** 2025-08-23 11:15 UTC  
 **Category:** Documentation Best Practices  
@@ -31,11 +31,33 @@ The user correctly identified this as a problem and requested correction.
 
 ## Recommendations
 
+### **🚨 CRITICAL REQUIREMENT FOR AI ASSISTANTS 🚨**
+
+**YOU MUST ALWAYS CHECK THE CURRENT DATE BEFORE CREATING ANY DOCUMENT WITH A DATE**
+
+**This is NOT optional, NOT a suggestion, and NOT a best practice - this is a MANDATORY REQUIREMENT**
+
+**Every Single Time You Create a Document with a Date:**
+1. **STOP** what you're doing
+2. **Run** `date -u` command
+3. **Use** the exact output as your date
+4. **Never** assume, guess, or estimate dates
+
+**Failure to do this makes documentation look unprofessional and careless.**
+
+**Consequences of Violating This Requirement:**
+- **Documentation Quality**: Severely compromised
+- **User Trust**: Significantly damaged
+- **Professional Appearance**: Completely undermined
+- **Project Credibility**: Called into question
+- **User Frustration**: High - users have to correct basic errors
+
 ### **For AI Assistants**
-1. **Always Verify Current Date**: Use `date -u` command before creating time-sensitive content
+1. **MANDATORY Date Verification**: You MUST use `date -u` command before creating ANY document with a date
 2. **Never Assume Dates**: Don't use logical but unverified dates
 3. **Check System Time**: Verify the current date and time from the system
 4. **Use Real Timestamps**: Base all dates on actual current time
+5. **CRITICAL REQUIREMENT**: This is NOT optional - you MUST check the date every single time
 
 ### **For Documentation Creation**
 1. **Date Verification**: Always check current date before creating documents

@@ -6,6 +6,8 @@
 
 This document provides detailed system architecture and component design for the Strava Vagabond application based on our chosen Option 5: Hybrid Monolith with Internal Queues. The architecture leverages serverless infrastructure (Neon PostgreSQL + Upstash Redis) to provide a cost-effective, scalable solution that can evolve to microservices with Golang integration.
 
+> **Note**: For application context and backend service characteristics, see [Problem Statement - Application Context](01-problem-statement.md#application-context).
+
 ## Chosen Architecture: Option 5 - Hybrid Monolith + Serverless Infrastructure
 
 ### **Architecture Overview**

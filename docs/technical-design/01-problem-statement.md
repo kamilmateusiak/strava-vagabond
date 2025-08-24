@@ -12,6 +12,19 @@ I lack visibility into my cycling exploration patterns. I cannot easily determin
 
 **Impact**: I cannot quantify how much new ground I'm covering, identify unexplored areas for future rides, measure my exploration progress over time, or avoid unknowingly repeating routes.
 
+## Application Context
+
+**Backend-Only Application**: This is a backend service designed for "set it and forget it" operation. Users connect their Strava account once, and the app runs autonomously in the background, processing new activities via webhooks and sending email summaries without requiring ongoing user interaction.
+
+**User Workflow**:
+1. **User Setup**: Connect Strava account (one-time authentication)
+2. **Historical Processing**: App processes existing activities (background processing)
+3. **Autonomous Operation**: App waits for new activities via Strava webhooks
+4. **Passive Communication**: User receives email summaries without app interaction
+5. **Continuous Service**: App remains functional without user intervention
+
+**Why This Matters**: Unlike frontend apps where users actively interact, this backend service must maintain continuous operation to process Strava webhooks and send timely email notifications. User experience depends on the app working reliably in the background without authentication interruptions.
+
 ## Current State
 
 Strava tracks GPS coordinates and route data, providing basic activity recording and historical storage. However, there's no built-in way to identify overlapping or new route segments, and historical route analysis requires manual comparison.

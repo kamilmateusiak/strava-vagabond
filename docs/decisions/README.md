@@ -93,6 +93,7 @@ Each decision is documented in a separate markdown file following this structure
 - [Infrastructure Provider Selection](009-infrastructure-provider-selection.md) - Chose Upstash Redis and Neon PostgreSQL for serverless infrastructure
 - [Event-Driven Architecture](010-event-driven-architecture.md) - Implemented event-driven architecture with Bull + Redis for queue management
 - [Query Builder Selection](011-query-builder-selection.md) - Chose Kysely as TypeScript query builder for PostgreSQL + PostGIS integration
+- [Strava Token Management Strategy](012-strava-token-management.md) - Decided to store refresh tokens for automatic token refresh
 
 ## How to Use This Log
 
