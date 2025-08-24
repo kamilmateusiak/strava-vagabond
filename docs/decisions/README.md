@@ -92,6 +92,7 @@ Each decision is documented in a separate markdown file following this structure
 - [Technology Stack Selection](008-technology-stack-selection.md) - Selected Option 5 hybrid monolith with Node.js + Bull + Upstash + Neon
 - [Infrastructure Provider Selection](009-infrastructure-provider-selection.md) - Chose Upstash Redis and Neon PostgreSQL for serverless infrastructure
 - [Event-Driven Architecture](010-event-driven-architecture.md) - Implemented event-driven architecture with Bull + Redis for queue management
+- [Query Builder Selection](011-query-builder-selection.md) - Chose Kysely as TypeScript query builder for PostgreSQL + PostGIS integration
 
 ## How to Use This Log
 

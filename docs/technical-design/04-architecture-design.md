@@ -58,6 +58,10 @@ graph TB
   - **Features**: Dead letter queues, retry logic, job monitoring, priority queues
   - **Benefits**: Built-in error handling, exponential backoff, job persistence
 - **Database**: Neon PostgreSQL + PostGIS (serverless)
+- **Data Access Layer**: Kysely (TypeScript query builder)
+  - **Benefits**: Full type safety, no ORM overhead, native PostgreSQL support
+  - **PostGIS Integration**: Custom spatial queries with raw SQL + type safety
+  - **Performance**: Direct SQL control, connection pooling, query optimization
 - **Background Jobs**: Node.js worker threads
 - **Deployment**: Vercel, Railway, or DigitalOcean
 - **Future Evolution**: Microservices with Golang route analyzer
