@@ -42,14 +42,14 @@ This document defines the REST API design for the Strava Vagabond application. T
 - **Auto-Refresh**: Background job refreshes tokens before expiration
 - **Fallback**: If refresh fails, user is prompted to re-authenticate
 
-> **Critical for Backend Service**: Refresh tokens are essential for continuous operation. Since this is a backend service that processes Strava webhooks autonomously, users cannot re-authenticate when tokens expire. Automatic token refresh ensures the app remains functional 24/7 without user intervention.
+> **Critical for Backend Service**: Refresh tokens are essential for continuous operation. Since this is a backend service that processes Strava webhooks autonomously, users cannot re-authenticate when tokens expire. Internal token refresh ensures the app remains functional 24/7 without user intervention.
 
 ### **Authentication Flow**
 1. **Strava OAuth**: User authorizes via Strava
 2. **Token Exchange**: Exchange Strava code for access token + refresh token
 3. **User Creation**: Create or update user in our system with encrypted Strava tokens
 4. **JWT Generation**: Generate JWT for API access
-5. **Token Refresh**: Background job automatically refreshes Strava tokens before expiration
+5. **Token Refresh**: Worker threads refresh Strava tokens when needed during API calls
 
 ### **Complete OAuth Flow for Testing**
 
@@ -586,7 +586,7 @@ X-RateLimit-Endpoint: strava_sync
 
 #### **Authentication Endpoints** (Unlimited)
 - **OAuth Flow**: No limits - needed for user onboarding
-- **Token Refresh**: No limits - required for continuous access
+- **Token Refresh**: No limits - required for continuous access (handled internally)
 
 #### **User Management** (100 requests per 15 minutes)
 - **Profile Updates**: Moderate frequency, user-initiated
@@ -688,7 +688,7 @@ X-RateLimit-Endpoint: strava_sync
 
 ### **Authentication**
 - **JWT Tokens**: Secure, stateless authentication
-- **Token Refresh**: Automatic token renewal
+- **Token Refresh**: Internal token renewal by worker threads
 - **Scope-based Access**: Fine-grained permissions
 - **Rate Limiting**: Prevent abuse and DoS
 

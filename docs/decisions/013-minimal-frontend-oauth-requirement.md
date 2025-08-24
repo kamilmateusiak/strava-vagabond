@@ -113,3 +113,7 @@ app.use('/v1', apiRoutes);
 - [Technology Stack Selection](008-technology-stack-selection.md) - Node.js + Express for backend
 - [Infrastructure Provider Selection](009-infrastructure-provider-selection.md) - Neon + Upstash for infrastructure
 - [Strava Token Management Strategy](012-strava-token-management.md) - Storing refresh tokens for continuous operation
+
+## Post-Decision Update
+
+**Note**: After implementing the event-driven architecture, we realized that token refresh can be handled entirely internally by worker threads without needing an external API endpoint. Worker threads can call Strava API directly for new tokens and update the database, keeping the system simple and self-contained.
