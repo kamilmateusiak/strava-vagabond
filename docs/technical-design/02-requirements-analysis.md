@@ -100,6 +100,12 @@ This section defines the functional and non-functional requirements for the Stra
 - **Activity Synchronization**: Fetch and process new Strava activities
 - **Email Notifications**: Send ride summary emails after activity analysis completion
 
+### Phase 1: Minimal Frontend
+- **OAuth Connection Page**: HTML page with Strava connection button
+- **Callback Handling Page**: Success/error page after Strava authorization
+- **Responsive Design**: Mobile-friendly CSS layout
+- **Server-Side Rendering**: Express.js templates for dynamic content
+
 ## Out of Scope
 
 ### Discovery Features (Future Phases)
@@ -132,10 +138,11 @@ This section defines the functional and non-functional requirements for the Stra
 - **Advanced Security**: Enterprise-grade authentication and authorization
 - **Business Analytics**: Corporate reporting and insights
 
-### User Interface (Future Phases)
-- **Web Interface**: Interactive web application for post-ride analysis
-- **Mobile Interface**: Responsive design for mobile devices
-- **User Experience**: Intuitive navigation and data visualization
+### Complex User Interface (Future Phases)
+- **Interactive Web App**: Complex dashboard with data visualization
+- **Mobile App**: Native iOS/Android applications
+- **Advanced UI Components**: Complex charts, maps, and interactive features
+- **User Management Interface**: Complex user settings and preferences pages
 
 ### Platform Expansion
 - **Mobile Applications**: Native iOS/Android apps

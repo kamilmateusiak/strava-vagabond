@@ -51,6 +51,120 @@ This document defines the REST API design for the Strava Vagabond application. T
 4. **JWT Generation**: Generate JWT for API access
 5. **Token Refresh**: Background job automatically refreshes Strava tokens before expiration
 
+### **Complete OAuth Flow for Testing**
+
+#### **Step 1: Create Strava Application**
+1. **Go to Strava API Console**: https://developers.strava.com/console
+2. **Sign in** with your Strava account
+3. **Create a new application**:
+   - **Application Name**: Strava Vagabond
+   - **Category**: Fitness
+   - **Website**: Your development URL
+   - **Authorization Callback Domain**: `localhost` (for development)
+4. **Note your credentials**:
+   - Client ID
+   - Client Secret
+
+#### **Step 2: Start Development Server**
+```bash
+# Start your development server
+npm run dev
+# Server runs on http://localhost:3000
+
+# Frontend pages will be available at:
+# OAuth Page: http://localhost:3000/
+# Callback Page: http://localhost:3000/callback
+```
+
+#### **Step 3: Test OAuth Flow**
+1. **Open OAuth Page**: Navigate to `http://localhost:3000/` in your browser
+2. **Click "Connect with Strava"**: This will redirect to Strava's authorization page
+3. **Authorize Application**: Sign in to Strava and grant permissions
+4. **Return to App**: Strava redirects back to your callback page
+5. **View Success**: See confirmation that your account is connected
+
+#### **Step 4: Get API Access Token**
+After successful OAuth, you need to obtain the JWT token for API testing. Check the database directly:
+
+```sql
+-- Connect to your Neon PostgreSQL database
+-- Check the users table for your JWT token
+SELECT 
+  id,
+  strava_id,
+  email,
+  strava_access_token,
+  strava_refresh_token,
+  strava_token_expires_at,
+  created_at
+FROM users 
+WHERE strava_id = 'your_strava_id';
+
+-- For development, you might also want to see all users
+SELECT strava_id, email, created_at FROM users;
+```
+
+**Note**: This approach is useful for:
+- **Development debugging**: See exactly what's stored in the database
+- **Token validation**: Verify tokens are being saved correctly
+- **Data inspection**: Check user data structure and relationships
+- **Troubleshooting**: Debug OAuth flow issues
+
+#### **Step 5: Test API Access**
+```bash
+# Use the JWT token to test our API endpoints
+
+# Test user profile
+curl -H "Authorization: Bearer <jwt_token>" \
+  http://localhost:3000/v1/users/me
+
+# Test Strava activities
+curl -H "Authorization: Bearer <jwt_token>" \
+  http://localhost:3000/v1/strava/activities
+
+# Test route analysis
+curl -H "Authorization: Bearer <jwt_token>" \
+  http://localhost:3000/v1/routes
+```
+
+#### **Step 5: Verify Frontend Pages**
+- **OAuth Page** (`/`): Should show Strava connection button
+- **Callback Page** (`/callback`): Should handle success/error states
+- **Responsive Design**: Test on mobile devices
+- **Error Handling**: Test with invalid OAuth responses
+
+#### **Development Environment Setup**
+```bash
+# .env file for development
+STRAVA_CLIENT_ID=your_client_id_from_strava_console
+STRAVA_CLIENT_SECRET=your_client_secret_from_strava_console
+JWT_SECRET=your_jwt_secret_key
+REDIRECT_URI=http://localhost:3000/callback
+
+# Start your development server
+npm run dev
+# Server runs on http://localhost:3000
+
+# Frontend pages will be available at:
+# OAuth Page: http://localhost:3000/
+# Callback Page: http://localhost:3000/callback
+```
+
+#### **Testing Different Endpoints**
+```bash
+# Test user profile
+curl -H "Authorization: Bearer <jwt_token>" \
+  http://localhost:3000/v1/users/me
+
+# Test Strava activities
+curl -H "Authorization: Bearer <jwt_token>" \
+  http://localhost:3000/v1/strava/activities
+
+# Test route analysis
+curl -H "Authorization: Bearer <jwt_token>" \
+  http://localhost:3000/v1/routes
+```
+
 ## Core API Endpoints
 
 ### **1. Authentication Endpoints**
@@ -98,18 +212,7 @@ This document defines the REST API design for the Strava Vagabond application. T
 }
 ```
 
-#### **POST /auth/refresh**
-**Description**: Refresh JWT token
 
-**Headers**: `Authorization: Bearer <jwt-token>`
-
-**Response**:
-```json
-{
-  "access_token": "new-jwt-token",
-  "expires_in": 3600
-}
-```
 
 ### **2. User Management Endpoints**
 
@@ -125,8 +228,7 @@ This document defines the REST API design for the Strava Vagabond application. T
   "strava_id": "12345",
   "email": "user@example.com",
   "preferences": {
-    "email_notifications": true,
-    "theme": "dark"
+    "email_notifications": true
   },
   "created_at": "2024-01-15T10:30:00Z",
   "updated_at": "2024-01-15T10:30:00Z"
@@ -142,8 +244,7 @@ This document defines the REST API design for the Strava Vagabond application. T
 ```json
 {
   "preferences": {
-    "email_notifications": false,
-    "theme": "light"
+    "email_notifications": false
   }
 }
 ```
@@ -549,6 +650,20 @@ X-RateLimit-Endpoint: strava_sync
 - **Experimental**: New features marked as beta
 - **Deprecated**: Endpoints scheduled for removal
 
+## Frontend Requirements
+
+### **Minimal Frontend Pages**
+- **OAuth Connection Page** (`/`): Simple HTML page with Strava connection button
+- **Callback Page** (`/callback`): Success/error handling after Strava authorization
+- **Responsive Design**: Mobile-friendly CSS layout
+- **Server-Side Rendering**: Express.js templates for dynamic content
+
+### **Frontend Implementation**
+- **HTML Structure**: Semantic HTML5 with accessibility features
+- **CSS Styling**: Basic responsive design using CSS Grid/Flexbox
+- **No JavaScript**: Pure HTML + CSS for simplicity
+- **Mobile First**: Responsive design starting from mobile breakpoints
+
 ## Testing & Documentation
 
 ### **API Testing**
@@ -556,6 +671,12 @@ X-RateLimit-Endpoint: strava_sync
 - **Integration Tests**: Automated API testing
 - **Load Testing**: Performance validation
 - **Security Testing**: Authentication and authorization
+
+### **Frontend Testing**
+- **Browser Testing**: Test OAuth flow in different browsers
+- **Mobile Testing**: Verify responsive design on mobile devices
+- **OAuth Flow Testing**: End-to-end Strava connection testing
+- **Error Handling**: Test various OAuth error scenarios
 
 ### **Documentation**
 - **OpenAPI 3.0**: Machine-readable API specification

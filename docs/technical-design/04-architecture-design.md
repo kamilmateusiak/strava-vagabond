@@ -20,6 +20,11 @@ graph TB
     end
     
     subgraph "Monolithic Application"
+        subgraph "Frontend Layer"
+            OAuthPage[OAuth Page<br/>HTML + CSS]
+            CallbackPage[Callback Page<br/>HTML + CSS]
+        end
+        
         subgraph "Core Services"
             Strava[Strava Service]
             InternalQueue[Internal Queue<br/>Upstash Redis]
@@ -43,11 +48,14 @@ graph TB
     RouteAnalyzer --> Email
     Email --> EmailService
     
+    OAuthPage --> Auth
+    CallbackPage --> Auth
+    Auth --> REST
+    
     REST --> Strava
     REST --> RouteAnalyzer
     REST --> Email
     
-    Auth --> REST
     NeonDB --> Strava
     NeonDB --> RouteAnalyzer
     NeonDB --> Email
@@ -56,6 +64,10 @@ graph TB
 ### **Technology Stack**
 
 - **Backend**: Node.js + Express/Fastify
+- **Frontend**: HTML + CSS (minimal, responsive)
+  - **OAuth Page**: Strava connection interface
+  - **Callback Page**: Success/error handling
+  - **Responsive Design**: Mobile-friendly layout
 - **Internal Queues**: Bull + Upstash Redis (serverless)
   - **Features**: Dead letter queues, retry logic, job monitoring, priority queues
   - **Benefits**: Built-in error handling, exponential backoff, job persistence
