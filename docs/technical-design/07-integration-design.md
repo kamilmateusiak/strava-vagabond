@@ -1,9 +1,6 @@
 # Integration Design
 
-**Document**: Technical Design Document - Section 7  
-**Version**: 1.0  
-**Date**: 2025-08-24  
-**Status**: Draft  
+> **Document Focus**: Strava API integration, webhook handling, third-party service integration, and error handling strategies. For system architecture and API design, see [Architecture Design](04-architecture-design.md) and [API Design](06-api-design.md).  
 
 ## Overview
 
