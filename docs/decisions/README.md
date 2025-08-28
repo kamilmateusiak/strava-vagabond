@@ -95,6 +95,7 @@ Each decision is documented in a separate markdown file following this structure
 - [Query Builder Selection](011-query-builder-selection.md) - Chose Kysely as TypeScript query builder for PostgreSQL + PostGIS integration
 - [Strava Token Management Strategy](012-strava-token-management.md) - Decided to store refresh tokens for automatic token refresh
 - [Minimal Frontend OAuth Requirement](013-minimal-frontend-oauth-requirement.md) - Decided to add minimal frontend pages for OAuth flow
+- [Route Fingerprinting Algorithm Selection](014-route-fingerprinting-algorithm-selection.md) - Selected feature-based fingerprinting with Douglas-Peucker for route uniqueness detection
 
 ## How to Use This Log
 
