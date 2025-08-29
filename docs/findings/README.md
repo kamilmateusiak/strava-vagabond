@@ -43,6 +43,9 @@ Each finding is documented in a separate markdown file following this structure:
 - [User Expertise Validates AI Suggestions](008-user-expertise-ai-suggestions.md) - User expertise and independent research validate AI suggestions
 - [Partial File Reading Limitation](009-partial-file-reading-limitation.md) - AI agents tend to read partial files, leading to incomplete analysis
 - [AI Over-Agreement Limits Critical Thinking](010-ai-over-agreement-limits-critical-thinking.md) - AI assistants being overly agreeable limits critical thinking and problem-solving effectiveness
+- [Research Before Documentation is Critical](011-research-before-documentation.md) - AI assistants must research technology capabilities before documenting implementation details
+- [Built-in Security Features Outperform Custom Implementations](012-built-in-security-vs-custom-implementation.md) - Cloud providers' built-in security features often outperform custom implementations
+- [AI Agents Excel at Domain-Specific Research](013-ai-agents-excel-at-domain-specific-research.md) - AI agents are extremely effective at researching domain-specific topics outside user expertise
 
 ## How to Use These Findings
 

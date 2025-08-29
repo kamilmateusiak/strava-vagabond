@@ -214,7 +214,7 @@ curl -H "Authorization: Bearer <jwt_token>" \
 
 
 
-### **2. User Management Endpoints**
+### **2. User Management Endpoints (Including GDPR Compliance)**
 
 #### **GET /users/me**
 **Description**: Get current user profile
@@ -257,6 +257,82 @@ curl -H "Authorization: Bearer <jwt_token>" \
 **Headers**: `Authorization: Bearer <jwt-token>`
 
 **Response**: `204 No Content`
+
+#### **GET /users/data-export**
+**Description**: Export all user data for GDPR data portability
+
+**Headers**: `Authorization: Bearer <jwt-token>`
+
+**Query Parameters**:
+- `format`: Export format (`json` or `gpx`, default: `json`)
+
+**Response**:
+```json
+{
+  "user": {
+    "id": "user-uuid",
+    "strava_id": "12345",
+    "email": "user@example.com",
+    "created_at": "2024-01-01T00:00:00Z",
+    "preferences": {
+      "email_notifications": true
+    }
+  },
+  "activities": [
+    {
+      "id": "activity-uuid",
+      "strava_activity_id": "123456789",
+      "name": "Morning Ride",
+      "start_date": "2024-01-15T07:00:00Z",
+      "distance_m": 25000,
+      "total_elevation_gain_m": 450,
+      "elapsed_time": 5400
+    }
+  ],
+  "routes": [
+    {
+      "id": "route-uuid",
+      "uniqueness_score": 0.85,
+      "total_segments": 45,
+      "new_segments": 38,
+      "created_at": "2024-01-15T10:30:00Z"
+    }
+  ],
+  "exported_at": "2024-01-15T10:30:00Z",
+  "format": "json"
+}
+```
+
+**Note**: This endpoint provides complete data export for GDPR compliance. Users can download their data in JSON or GPX format for portability to other services.
+
+#### **POST /users/restrict-processing**
+**Description**: Control data retention and notification preferences
+
+**Headers**: `Authorization: Bearer <jwt-token>`
+
+**Request**:
+```json
+{
+  "preferences": {
+    "email_notifications": false,
+    "data_retention": "minimal"
+  }
+}
+```
+
+**Response**:
+```json
+{
+  "message": "Preferences updated successfully",
+  "preferences": {
+    "email_notifications": false,
+    "data_retention": "minimal"
+  },
+  "updated_at": "2024-01-15T10:30:00Z"
+}
+```
+
+**Note**: This endpoint allows users to control their data retention period and email notification preferences. Core functionality (route analysis, GPS processing) cannot be disabled as it's essential for the app to work. Data retention options: "minimal" (6 months), "standard" (2 years), "extended" (5 years).
 
 ### **3. Strava Integration Endpoints**
 
