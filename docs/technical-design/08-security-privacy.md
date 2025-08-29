@@ -1,10 +1,5 @@
 # Security & Privacy
 
-**Document**: Technical Design Document - Section 8  
-**Version**: 1.0  
-**Date**: 2025-08-28  
-**Status**: Draft  
-
 > **Document Focus**: Data protection, GDPR compliance, security architecture, and privacy by design principles. For system architecture and API design, see [Architecture Design](04-architecture-design.md) and [API Design](06-api-design.md).
 
 ## Overview

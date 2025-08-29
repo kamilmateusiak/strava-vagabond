@@ -46,6 +46,7 @@ Each finding is documented in a separate markdown file following this structure:
 - [Research Before Documentation is Critical](011-research-before-documentation.md) - AI assistants must research technology capabilities before documenting implementation details
 - [Built-in Security Features Outperform Custom Implementations](012-built-in-security-vs-custom-implementation.md) - Cloud providers' built-in security features often outperform custom implementations
 - [AI Agents Excel at Domain-Specific Research](013-ai-agents-excel-at-domain-specific-research.md) - AI agents are extremely effective at researching domain-specific topics outside user expertise
+- [Complexity Overwhelms Critical Thinking](014-complexity-overwhelms-critical-thinking.md) - Complex topics can overwhelm users and reduce critical engagement with AI answers
 
 ## How to Use These Findings
 
