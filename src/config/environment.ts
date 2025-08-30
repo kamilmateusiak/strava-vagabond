@@ -45,10 +45,10 @@ interface AppConfig {
 
 export const config: AppConfig = {
   server: {
-    port: parseInt(process.env.PORT || '3000', 10),
+    port: Number.parseInt(process.env.PORT || '3000', 10),
     host: process.env.HOST || 'localhost',
-    environment: process.env.NODE_ENV || 'development'
-  }
+    environment: process.env.NODE_ENV || 'development',
+  },
 };
 
 export default config;
