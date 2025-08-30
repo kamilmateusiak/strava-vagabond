@@ -97,6 +97,10 @@ Each decision is documented in a separate markdown file following this structure
 - [Minimal Frontend OAuth Requirement](013-minimal-frontend-oauth-requirement.md) - Decided to add minimal frontend pages for OAuth flow
 - [Route Fingerprinting Algorithm Selection](014-route-fingerprinting-algorithm-selection.md) - Selected feature-based fingerprinting with Douglas-Peucker for route uniqueness detection
 - [Linear Integration and Branch Naming Convention](015-linear-integration-branch-naming.md) - Linear integration with GitHub and standardized branch naming for development tasks
+- [Dependency-Driven Development Approach](016-dependency-driven-development.md) - Add dependencies only when implementing features that need them
+- [Self-Explanatory Code Principle](017-self-explanatory-code-principle.md) - Write self-explanatory code with minimal comments
+- [Web Framework Selection: Fastify](018-web-framework-selection.md) - Selected Fastify over Express.js for better TypeScript support
+- [Technical Design Documents Are Critical](019-technical-design-documents-are-critical.md) - AI agents must always check technical design documents
 
 ## How to Use This Log
 

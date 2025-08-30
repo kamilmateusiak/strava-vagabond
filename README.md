@@ -1,53 +1,99 @@
-# Strava Vagabond
+# Strava Vagabond 🚴
 
 A backend application that analyzes Strava ride activities to track unique paths and calculate the percentage of new routes discovered on each ride.
 
-## Project Overview
+## 🎯 Project Status
 
-This project aims to provide cyclists with insights into their exploration patterns by analyzing their Strava activities and identifying which routes are new vs. previously ridden.
+- **Technical Design Document**: ✅ 100% Complete (11/11 sections)
+- **Project Setup**: 🚧 In Progress (STR-5: Project Setup & Repository)
+- **Implementation**: 📋 Planned (74 tasks in Linear)
 
-## Features
+## 🚀 Getting Started
 
-- Strava account integration
-- Activity analysis and path tracking
-- New route percentage calculation
-- REST API for data access
-- Email summaries (future phase)
-- Comprehensive monitoring and observability
+### Prerequisites
 
-## Project Structure
+- **Node.js**: 22.19.0 LTS (use `.nvmrc` for automatic version switching)
+- **npm**: 10.9.3 or higher
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd strava-vagabond
+   ```
+
+2. **Switch to correct Node.js version**
+   ```bash
+   nvm use
+   ```
+
+3. **Install dependencies** (when implementing features)
+   ```bash
+   npm install
+   ```
+
+4. **Set up environment variables**
+   ```bash
+   cp env.example .env
+   # Edit .env with your configuration
+   ```
+
+5. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+## 📁 Project Structure
 
 ```
 strava-vagabond/
-├── docs/                    # Documentation
-│   ├── technical-design/    # Technical Design Document
-│   ├── decisions/          # Decision logs
-│   └── findings/           # Findings and lessons learned
 ├── src/                    # Source code
-├── tests/                  # Test files
-├── config/                 # Configuration files
-├── scripts/                # Utility scripts
-└── README.md              # This file
+│   ├── config/            # Configuration files
+│   ├── controllers/       # Route controllers
+│   ├── middleware/        # Express middleware
+│   ├── models/            # Data models
+│   ├── routes/            # API routes
+│   ├── services/          # Business logic
+│   ├── utils/             # Utility functions
+│   └── index.js           # Application entry point
+├── tests/                 # Test files
+│   ├── unit/              # Unit tests
+│   └── integration/       # Integration tests
+├── docs/                  # Documentation
+│   ├── decisions/         # Architecture decisions
+│   ├── findings/          # Research findings
+│   ├── technical-design/  # Technical design document
+│   ├── api/               # API documentation
+│   └── deployment/        # Deployment guides
+├── .nvmrc                 # Node.js version specification
+├── package.json           # Project configuration
+└── env.example            # Environment variables template
 ```
 
-## Development Approach
+## 🛠️ Development Approach
 
-This project follows an iterative development approach with:
-1. **Technical Design Phase**: Comprehensive analysis and planning
-2. **Implementation Phase**: Iterative development with high test coverage
-3. **Iteration Phase**: Continuous improvement and feature expansion
+### Dependency-Driven Development
+- **Minimal setup**: Start with essential project structure
+- **Incremental dependencies**: Add packages only when implementing features
+- **Clean architecture**: Build features progressively
 
-## Getting Started
+### Task Management
+- **Linear integration**: All development tasks tracked in Linear
+- **Branch naming**: `str-{task-number}-{kebab-case-title}`
+- **GitHub integration**: Automatic linking between code and tasks
 
-1. Review the [Technical Design Document](docs/technical-design/README.md)
-2. Check the [Decision Log](docs/decisions/README.md) for development decisions
-3. Learn from [Findings and Lessons](docs/findings/README.md) for process improvement
-4. Follow the implementation plan in the TDD
+## 📋 Current Focus
 
-## Technology Stack
+**STR-5: Project Setup & Repository** - Setting up the foundational project structure and development environment.
 
-To be determined during the technical design phase.
+## 🔗 Links
 
-## License
+- **Linear**: Project task management
+- **Technical Design**: Complete system architecture and implementation plan
+- **Decision Logs**: Architecture decisions and rationale
+- **Findings**: Research insights and lessons learned
 
-[To be determined]
+## 📄 License
+
+MIT License - see LICENSE file for details.
