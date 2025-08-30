@@ -2,7 +2,7 @@
 
 ## Decision
 
-**Date**: 2025-08-29  
+**Date**: 2025-08-30 13:19 UTC  
 **Status**: Accepted  
 **Type**: Development Process  
 
