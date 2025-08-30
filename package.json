@@ -1,0 +1,31 @@
+{
+  "name": "strava-vagabond",
+  "version": "1.0.0",
+  "description": "A backend application that analyzes Strava ride activities to track unique paths and calculate the percentage of new routes discovered on each ride.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "echo 'Add nodemon when implementing development server'",
+    "test": "echo 'Add jest when implementing testing'",
+    "lint": "echo 'Add eslint when implementing code quality tools'",
+    "format": "echo 'Add prettier when implementing code formatting'"
+  },
+  "keywords": [
+    "strava",
+    "cycling",
+    "routes",
+    "analytics",
+    "postgis",
+    "nodejs",
+    "express"
+  ],
+  "author": "Kamil Mateusiak",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=22.19.0",
+    "npm": ">=10.0.0"
+  }
+}

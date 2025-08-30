@@ -97,6 +97,7 @@ Each decision is documented in a separate markdown file following this structure
 - [Minimal Frontend OAuth Requirement](013-minimal-frontend-oauth-requirement.md) - Decided to add minimal frontend pages for OAuth flow
 - [Route Fingerprinting Algorithm Selection](014-route-fingerprinting-algorithm-selection.md) - Selected feature-based fingerprinting with Douglas-Peucker for route uniqueness detection
 - [Linear Integration and Branch Naming Convention](015-linear-integration-branch-naming.md) - Linear integration with GitHub and standardized branch naming for development tasks
+- [Dependency-Driven Development Approach](016-dependency-driven-development.md) - Add dependencies only when implementing features that need them
 
 ## How to Use This Log
 
